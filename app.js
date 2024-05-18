@@ -94,13 +94,12 @@ module.exports = app
 //api7
 const getmovienames = dbobject => {
   return {
-    directorId: dbobject.director_id,
-    directorName: dbobject.director_name,
+    movieName: dbobject.movie_name,
   }
 }
 app.get('/directors/:directorsId/movies/', async (request, response) => {
   const {directorId} = request.params
-  const directorquery = `select * from director where 
+  const directorquery = `select * from movie where 
   director_id=${directorId}`
   const dbresponse = await db.all(directorquery)
   response.send(
